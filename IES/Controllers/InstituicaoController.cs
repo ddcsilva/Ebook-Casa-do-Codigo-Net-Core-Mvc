@@ -52,7 +52,7 @@ public class InstituicaoController : Controller
     // Definindo a rota para a página de criação de uma Instituição
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Create(Instituicao instituicao)
+    public IActionResult Criar(Instituicao instituicao)
     {
         // Adicionando a Instituição na lista de Instituições
         instituicoes.Add(instituicao);
@@ -60,5 +60,13 @@ public class InstituicaoController : Controller
         instituicao.InstituicaoID = instituicoes.Select(i => i.InstituicaoID).Max() + 1;
         // Redirecionando para a página inicial da Instituição
         return RedirectToAction("Index");
+    }
+    
+    public ActionResult Editar(long id)
+    {
+        // Buscando a Instituição na lista de Instituições pelo ID
+        var instituicao = instituicoes.Where(i => i.InstituicaoID == id).First();
+        // Retornando a Instituição para a página de edição
+        return View(instituicao);
     }
 }

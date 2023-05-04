@@ -1,5 +1,6 @@
 ﻿@model IES.Models.Instituicao
 
+<!-- Define o layout da página -->
 @{
     Layout = null;
 }
@@ -9,8 +10,9 @@
 <html>
 
 <head>
+    <!-- Torna a página responsiva -->
     <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
+    <title>Criar Instituição</title>
 </head>
 
 <body>
@@ -19,12 +21,16 @@
     <hr />
     <div class="row">
         <div class="col-md-4">
+            <!-- asp-action: define a ação que será executada -->
             <form asp-action="Create">
+                <!-- asp-validation-summary: exibe uma lista com os erros de validação -->
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
+                    <!-- asp-for: define o campo que será exibido -->
                     <label asp-for="Nome" class="col-md-2 control-label"></label>
                     <div class="col-md-10">
                         <input asp-for="Nome" class="form-control" />
+                        <!-- asp-validation-for: exibe uma mensagem de erro caso o campo não seja válido -->
                         <span asp-validation-for="Nome" class="text-danger"></span>
                     </div>
                 </div>
@@ -50,6 +56,7 @@
 
     @section Scripts {
         @{
+            // _ValidationScriptsPartial: renderiza os scripts necessários para a validação dos campos
             await Html.RenderPartialAsync("_ValidationScriptsPartial");
         }
     }
